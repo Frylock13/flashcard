@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Flashcard</title>
+  <title>Флэшкарточкер</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
+  <section class="container-fluid">
 
-<%= yield %>
+    <header>
+      <div class="row">
+        <div class="col-md-4 logo">
+          <h1>Флэшкарточкер</h1>
+        </div>
+        <div class="col-md-8 header_nav">
+          <ul class="nav nav-pills">
+            <li><a href="#">Все карточки</a></li>
+            <li><a href="#">Добавить карточку</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
 
+    <section>
+      <div class="row">
+        <div class="col-md-12">
+          <p style="font-size: 22px;">
+            <%= yield %>
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </section>
 </body>
 </html>

@@ -1,0 +1,22 @@
+<div id="row">
+  <table class="table">
+    <tr>
+      <td><b>Оригинальный текст</b></td>
+      <td><%= @card.origin_text %></td>
+    </tr>
+    <tr>
+      <td><b>Перевод</b></td>
+      <td><%= @card.translated_text %></td>
+    </tr>
+    <tr>
+      <td><b>Дата просмотра</b></td>
+      <td><%= @card.review_date.strftime("%d/%m/%y") %></td>
+    </tr>
+      <td><b>Создано</b></td>
+      <td><%= @card.created_at.strftime("%d/%m/%y - %H:%M:%S") %></td>
+    <tr>
+      <td><b>Обновлено</b></td>
+      <td><%= @card.updated_at.strftime("%d/%m/%y - %H:%M:%S") %></td>
+    </tr>
+  </table>
+</div>

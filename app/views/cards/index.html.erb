@@ -16,8 +16,8 @@
           <td><%= card.review_date.strftime("%d/%m/%y") %></td>
           <td><%= card.created_at.strftime("%d/%m/%y - %H:%M:%S") %></td>
           <td><%= card.updated_at.strftime("%d/%m/%y - %H:%M:%S") %></td>
-          <td><%= link_to "Редактировать", edit_card_path(card), :class => "btn btn-warning" %></td>
-          <td><%= link_to "Удалить", card, method: :delete, data: { confirm: 'Вы уверены?' }, :class => "btn btn-danger" %></td>
+          <td><%= link_to "Редактировать", edit_card_path(card), class: "btn btn-warning" %></td>
+          <td><%= link_to "Удалить", card, method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-danger" %></td>
         </tr>
       <% end %>
 </div>

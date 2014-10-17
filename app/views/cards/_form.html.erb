@@ -1,6 +1,6 @@
-<%= simple_form_for @card do |f| %>
-  <%= f.input :origin_text, label: "Оригинальный текст" %>
-  <%= f.input :translated_text, label: "Перевод" %>
-  <%= f.input :review_date, label: "Дата просмотра" %>
+<%= bootstrap_form_for @card do |f| %>
+  <%= f.text_field :origin_text, label: "Оригинальный текст" %>
+  <%= f.text_field :translated_text, label: "Перевод" %>
+  <%= f.date_field :review_date, label: "Дата просмотра" %>
   <%= f.submit "Сохранить", class: "btn btn-success" %>
 <% end %>

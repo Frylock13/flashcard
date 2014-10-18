@@ -29,9 +29,7 @@
       <div class="row">
         <div class="col-md-12 content">
           <% if flash[:notice] %>
-            <center>
-              <h3><div class="notice"><%= flash[:notice] %></div></h3>
-            </center>
+            <h3><div class="notice"><%= flash[:notice] %></div></h3>
           <% end %>
           <p><%= yield %></p>
         </div>

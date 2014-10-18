@@ -1,1 +1,17 @@
 Первый в мире удобный менеджер флеш-карточек. Именно так.
+<% if @card %>
+  <%= form_tag(check_path) do %>
+    <center>
+      <div class = "card">
+        <%= @card.origin_text %>
+        <%= text_field_tag :translated_text %>
+        <%= hidden_field_tag :id, @card.id %>
+        <%= submit_tag "Проверить", class: "btn btn-primary" %>
+      </div>
+    </center>
+  <% end %>
+<% else %>
+  <center>
+    <h3>В данный момент нет карточек для изучения.</h3>
+  </center>
+<% end %>

@@ -31,7 +31,7 @@
           <% if flash[:notice] %>
             <h3><div class="notice"><%= flash[:notice] %></div></h3>
           <% end %>
-          <p><%= yield %></p>
+          <%= yield %>
         </div>
       </div>
     </section>

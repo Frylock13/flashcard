@@ -1,8 +1,8 @@
-<div class = "cards">
+<div class="cards">
   Первый в мире удобный менеджер флеш-карточек. Именно так.
   <% if @card %>
     <%= form_tag(check_path) do %>
-      <div class = "card">
+      <div class="card">
         <%= @card.origin_text %>
         <%= text_field_tag :translated_text %>
         <%= hidden_field_tag :card_id, @card.id %>

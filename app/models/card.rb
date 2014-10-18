@@ -1,7 +1,7 @@
 class Card < ActiveRecord::Base
   validates :origin_text, :translated_text, presence: true
 
-  scope :cards_for_review, -> { where('review_date <= ?', DateTime.now).order("RANDOM()") }
+  scope :for_review, -> { where('review_date <= ?', DateTime.now).order("RANDOM()") }
 
   def check_answer(answer)
     if answer == self.translated_text

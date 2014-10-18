@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @card = Card.cards_for_review.first
+    @card = Card.for_review.first
   end
 
   def check

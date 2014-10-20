@@ -12,3 +12,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'simple_form'
 gem 'bootstrap_form'
+
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl'
+end

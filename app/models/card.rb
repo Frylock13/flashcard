@@ -16,5 +16,4 @@ class Card < ActiveRecord::Base
   def change_review_date
     update(review_date: DateTime.now + 3.days)
   end
-
 end

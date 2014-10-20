@@ -6,9 +6,9 @@ class HomeController < ApplicationController
   def check
     @card = Card.find(params[:card_id])
     if @card.check_answer(params[:translated_text])
-      flash[:notice] = "Верно"
+      flash[:notice] = "Верный ответ"
     else
-      flash[:notice] = "Не верно"
+      flash[:notice] = "Ответ неверный или содержит пустое значение"
     end
     redirect_to root_path
   end

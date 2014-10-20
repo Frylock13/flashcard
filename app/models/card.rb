@@ -1,5 +1,5 @@
 class Card < ActiveRecord::Base
-  before_save { |card| card.translated_text = card.translated_text.mb_chars.downcase }
+  before_save :to_lowercase
 
   validates :origin_text, :translated_text, presence: true
 
@@ -15,5 +15,9 @@ class Card < ActiveRecord::Base
 
   def change_review_date
     update(review_date: DateTime.now + 3.days)
+  end
+
+  def to_lowercase
+    self.translated_text = translated_text.mb_chars.downcase
   end
 end

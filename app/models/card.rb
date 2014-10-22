@@ -3,7 +3,7 @@ class Card < ActiveRecord::Base
 
   validates :origin_text, :translated_text, presence: true
 
-  scope :for_review, -> { where('review_date <= ?', DateTime.now).order("RANDOM()") }
+  scope :for_review, -> { where('review_date <= ?', Date.today).order("RANDOM()") }
 
   def check_answer(answer)
     if answer.mb_chars.downcase == translated_text
@@ -14,7 +14,7 @@ class Card < ActiveRecord::Base
   end
 
   def change_review_date
-    update(review_date: DateTime.now + 3.days)
+    update(review_date: Date.today + 3.days)
   end
 
   def to_lowercase

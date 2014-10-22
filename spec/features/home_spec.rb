@@ -12,7 +12,6 @@ describe "Homepage" do
       visit '/'
       fill_in "translated_text", with: "яблоко"
       click_button "Проверить"
-      card.check_answer("яблоко")
       expect(page).to have_content "Верный ответ"
     end
   end

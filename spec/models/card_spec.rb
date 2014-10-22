@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Card do
   before :each do
-      @card = create(:card)
+    @card = create(:card)
   end
 
   it "check the right answer" do

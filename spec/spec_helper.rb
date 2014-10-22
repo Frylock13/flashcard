@@ -6,6 +6,8 @@ require 'capybara/rspec'
 require 'capybara/rails'
 require 'database_cleaner'
 require 'factory_girl_rails'
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

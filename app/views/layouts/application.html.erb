@@ -28,8 +28,11 @@
     <section>
       <div class="row">
         <div class="col-md-12 content">
-          <% if flash[:notice] %>
-            <h3><div class="notice"><%= flash[:notice] %></div></h3>
+          <% if flash[:wrong] %>
+            <h3><div class="alert alert-danger" role="alert"><%= flash[:wrong] %></div></h3>
+          <% elsif flash[:right] %>
+            <h3><div class="alert alert-success" role="alert"><%= flash[:right] %></div></h3>
+          <% else %>
           <% end %>
           <%= yield %>
         </div>

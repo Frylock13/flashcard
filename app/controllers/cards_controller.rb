@@ -17,21 +17,32 @@ class CardsController < ApplicationController
 
   def create
     @card = Card.new(card_params)
-    @card.save
+    if @card.save
+      flash[:access] = "Карточка успешно создана"
+    else
+      flash[:danger] = "Произошла ошибка при добавлении карточки"
+      render 'new'
+    end
 
     redirect_to @card
   end
 
   def update
     if @card.update(card_params)
+      flash[:access] = "Карточка успешно обновлена"
       redirect_to @card
     else
+      flash[:danger] = "Произошла ошибка при обновлении карточки"
       render 'edit'
     end
   end
 
   def destroy
-    @card.destroy
+    if @card.destroy
+      flash[:access] = "Карточка успешно удалена"
+    else
+      flash[:danger] = "Произошла ошибка при удалении карточки"
+    end
 
     redirect_to cards_path
   end

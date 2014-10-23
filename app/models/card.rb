@@ -5,6 +5,8 @@ class Card < ActiveRecord::Base
 
   scope :for_review, -> { where('review_date <= ?', Date.today).order("RANDOM()") }
 
+  belongs_to :user
+
   def check_answer(answer)
     if answer.mb_chars.downcase == translated_text
       change_review_date

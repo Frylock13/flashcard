@@ -1,23 +1,28 @@
 require 'spec_helper'
 
 describe "homepage" do
+  before :each do
+    create(:user)
+    visit login_path
+    fill_in "email", with: "user@gmail.com"
+    fill_in "password", with: "pass"
+    click_button "Войти"
+    card = create(:card)
+    visit root_path
+  end
+
   describe "GET /" do
     it "displays homepage" do
-      visit root_path
       expect(page).to have_content "Первый в мире удобный менеджер флеш-карточек."
     end
 
     it "checks right answer" do
-      card = create(:card)
-      visit root_path
       fill_in "translated_text", with: "яблоко"
       click_button "Проверить"
       expect(page).to have_content "Верный ответ"
     end
 
     it "checks wrong answer" do
-      card = create(:card)
-      visit root_path
       fill_in "translated_text", with: "вишня"
       click_button "Проверить"
       expect(page).to have_content "Ответ неверный или содержит пустое значение"

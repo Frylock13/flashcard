@@ -1,6 +1,10 @@
 class HomeController < ApplicationController
   def index
-    @card = Card.for_review.first
+    if logged_in?
+      @card = Card.for_review.current_user(current_user.id).first
+    else
+      render 'layouts/index'
+    end
   end
 
   def check

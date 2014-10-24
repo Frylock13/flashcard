@@ -1,7 +1,7 @@
 class Card < ActiveRecord::Base
   before_save :to_lowercase
 
-  validates :origin_text, :translated_text, presence: true
+  validates :origin_text, :translated_text, :user_id, presence: true
 
   scope :for_review, -> { where('review_date <= ?', Date.today).order("RANDOM()") }
 

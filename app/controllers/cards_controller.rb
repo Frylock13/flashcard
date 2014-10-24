@@ -21,7 +21,6 @@ class CardsController < ApplicationController
       flash[:access] = "Карточка успешно создана"
     else
       flash[:danger] = "Произошла ошибка при добавлении карточки"
-      render 'new'
     end
 
     redirect_to @card
@@ -53,6 +52,6 @@ class CardsController < ApplicationController
     end
 
     def card_params
-      params.require(:card).permit(:origin_text, :translated_text, :review_date)
+      params.require(:card).permit(:origin_text, :translated_text, :review_date, :user_id)
     end
 end

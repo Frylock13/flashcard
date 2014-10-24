@@ -54,7 +54,6 @@ class CardsController < ApplicationController
         @card = Card.find(params[:id])
       else
         redirect_to cards_path
-        flash[:warning] = "Не надо так делать"
       end
     end
 

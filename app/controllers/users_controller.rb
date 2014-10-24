@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
+  before_filter :require_login
 
   def index
   end
@@ -39,7 +40,6 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
       else
         redirect_to cards_path
-        flash[:warning] = "Не надо так делать"
       end
     end
 

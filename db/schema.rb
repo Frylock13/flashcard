@@ -11,12 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141016172320) do
+ActiveRecord::Schema.define(version: 20141022201927) do
 
   create_table "cards", force: true do |t|
     t.string   "origin_text"
     t.string   "translated_text"
     t.date     "review_date"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "email"
+    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

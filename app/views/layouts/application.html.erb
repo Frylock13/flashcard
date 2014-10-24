@@ -10,29 +10,17 @@
 <body>
   <section class="container-fluid">
 
-    <header>
-      <div class="row">
-        <div class="col-md-4 logo">
-          <h1>Флэшкарточкер</h1>
-        </div>
-        <div class="col-md-8 header_nav">
-          <ul class="nav nav-pills">
-            <li><%= link_to "Главная", root_path %></li>
-            <li><%= link_to "Все карточки", cards_path %></li>
-            <li><%= link_to "Добавить карточку", new_card_path %></li>
-          </ul>
-        </div>
-      </div>
-    </header>
+    <%= render 'layouts/header' %>
 
     <section>
       <div class="row">
         <div class="col-md-12 content">
-          <% if flash[:wrong] %>
-            <h3><div class="alert alert-danger" role="alert"><%= flash[:wrong] %></div></h3>
-          <% elsif flash[:right] %>
-            <h3><div class="alert alert-success" role="alert"><%= flash[:right] %></div></h3>
-          <% else %>
+          <% flash.each do |type, message| %>
+            <h3>
+              <div class="alert <%= flash_class type %>">
+                <%= message %>
+              </div>
+            </h3>
           <% end %>
           <%= yield %>
         </div>

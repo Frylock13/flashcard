@@ -1,10 +1,7 @@
 class HomeController < ApplicationController
+  before_action :get_index, only: [:index]
+
   def index
-    if logged_in?
-      @card = Card.for_review.current_user(current_user.id).first
-    else
-      render 'layouts/index'
-    end
   end
 
   def check
@@ -16,4 +13,14 @@ class HomeController < ApplicationController
     end
     redirect_to root_path
   end
+
+  private
+    def get_index
+      if logged_in?
+        @user = User.find(current_user.id)
+        @card = @user.cards.for_review.first
+      else
+        render 'layouts/index'
+      end
+    end
 end

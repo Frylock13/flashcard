@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
-  before_filter :require_login
-
-  def index
-  end
+  before_filter :require_login, except: [:new, :create]
 
   def new
     @user = User.new
@@ -36,10 +33,10 @@ class UsersController < ApplicationController
 
   private
     def set_user
-      if User.find(params[:id]).id  == current_user.id
+      if logged_in? and User.find(params[:id]).id  == current_user.id
         @user = User.find(params[:id])
       else
-        redirect_to cards_path
+        redirect_to root_path
       end
     end
 

@@ -2,11 +2,7 @@ require 'spec_helper'
 
 describe "cards page" do
   before :each do
-    create(:user)
-    visit login_path
-    fill_in "email", with: "user@gmail.com"
-    fill_in "password", with: "pass"
-    click_button "Войти"
+    login
     card = create(:card)
     visit cards_path
   end

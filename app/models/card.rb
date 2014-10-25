@@ -7,10 +7,6 @@ class Card < ActiveRecord::Base
 
   belongs_to :user
 
-  def self.current_user(id)
-    where(user_id: id)
-  end
-
   def check_answer(answer)
     if answer.mb_chars.downcase == translated_text
       change_review_date

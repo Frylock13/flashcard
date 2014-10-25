@@ -17,7 +17,7 @@ class HomeController < ApplicationController
   private
     def get_index
       if logged_in?
-        @user = User.find(current_user.id)
+        @user = current_user
         @card = @user.cards.for_review.first
       else
         render 'layouts/index'

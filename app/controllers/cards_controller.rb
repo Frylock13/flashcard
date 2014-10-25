@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :set_card, only: [:edit, :show, :update, :destroy]
+  before_action :set_card, except: [:index, :new, :create]
   before_action :get_user, only: [:index, :create]
   before_filter :require_login
 
@@ -58,11 +58,7 @@ class CardsController < ApplicationController
     end
 
     def get_user
-      if logged_in?
-        @user = User.find(current_user.id)
-      else
-        redirect_to root_path
-      end
+      @user = current_user
     end
 
     def card_params

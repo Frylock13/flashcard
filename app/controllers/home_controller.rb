@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_action :get_index, only: [:index]
+  before_action :check_reg, only: [:index]
 
   def index
   end
@@ -16,13 +16,4 @@ class HomeController < ApplicationController
     end
     redirect_to root_path
   end
-
-  private
-    def get_index
-      if logged_in?
-        @card = current_user.cards.for_review.first
-      else
-        redirect_to about_path
-      end
-    end
 end

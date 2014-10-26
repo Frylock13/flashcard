@@ -32,13 +32,6 @@ class UsersController < ApplicationController
   end
 
   private
-    def set_user
-      if logged_in? and User.find(params[:id]).id  == current_user.id
-        @user = current_user
-      else
-        redirect_to root_path
-      end
-    end
 
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation)

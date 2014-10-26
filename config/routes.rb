@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :edit, :update, :create]
   resources :user_sessions, only: [:new, :create, :destroy]
+  get 'profile' => 'users#edit'
   get 'login' => 'user_sessions#new'
   post 'logout' => 'user_sessions#destroy', :as => :logout
   # The priority is based upon order of creation: first created -> highest priority.

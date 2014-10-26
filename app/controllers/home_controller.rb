@@ -4,6 +4,9 @@ class HomeController < ApplicationController
   def index
   end
 
+  def about
+  end
+
   def check
     @card = Card.find(params[:card_id])
     if @card.check_answer(params[:translated_text])
@@ -17,10 +20,9 @@ class HomeController < ApplicationController
   private
     def get_index
       if logged_in?
-        @user = current_user
-        @card = @user.cards.for_review.first
+        @card = current_user.cards.for_review.first
       else
-        render 'layouts/index'
+        redirect_to about_path
       end
     end
 end

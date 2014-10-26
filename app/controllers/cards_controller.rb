@@ -1,10 +1,9 @@
 class CardsController < ApplicationController
   before_action :set_card, except: [:index, :new, :create]
-  before_action :get_user, only: [:index, :create]
   before_filter :require_login
 
   def index
-    @cards = @user.cards
+    @cards = current_user.cards
   end
 
   def show
@@ -18,7 +17,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = @user.cards.new(card_params)
+    @card = current_user.cards.new(card_params)
     if @card.save
       flash[:access] = "Карточка успешно создана"
     else
@@ -51,14 +50,10 @@ class CardsController < ApplicationController
   private
     def set_card
       if logged_in? and Card.find(params[:id]).user_id  == current_user.id
-        @card = Card.find(params[:id])
+        @card = current_user.cards.find(params[:id])
       else
         redirect_to cards_path
       end
-    end
-
-    def get_user
-      @user = current_user
     end
 
     def card_params

@@ -49,11 +49,7 @@ class CardsController < ApplicationController
 
   private
     def set_card
-      if logged_in? and Card.find(params[:id]).user_id  == current_user.id
-        @card = current_user.cards.find(params[:id])
-      else
-        redirect_to cards_path
-      end
+      @card = current_user.cards.find(params[:id])
     end
 
     def card_params

@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   private
     def set_user
       if logged_in? and User.find(params[:id]).id  == current_user.id
-        @user = User.find(params[:id])
+        @user = current_user
       else
         redirect_to root_path
       end

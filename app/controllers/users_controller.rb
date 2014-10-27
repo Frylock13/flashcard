@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
-  before_filter :require_login, except: [:new, :create]
+  skip_before_filter :require_login, only: [:new, :create]
 
   def new
     @user = User.new

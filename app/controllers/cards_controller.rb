@@ -1,6 +1,5 @@
 class CardsController < ApplicationController
   before_action :set_card, except: [:index, :new, :create]
-  before_filter :require_login
 
   def index
     @cards = current_user.cards

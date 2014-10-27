@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
-  root "home#index"
-  post "check" => "home#check"
-  resources :cards
+  root 'home#index'
 
+  get 'about' => 'home#about'
+  get 'profile' => 'users#edit'
+  get 'login' => 'user_sessions#new'
+
+  post 'check' => 'home#check'
+
+  delete 'logout' => 'user_sessions#destroy', :as => :logout
+
+  resources :cards
+  resources :users, only: [:new, :edit, :update, :create]
+  resources :user_sessions, only: [:new, :create]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

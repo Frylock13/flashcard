@@ -1,6 +1,11 @@
 class HomeController < ApplicationController
+  skip_before_filter :require_login, except: [:index]
+
   def index
-    @card = Card.for_review.first
+    @card = current_user.cards.for_review.first
+  end
+
+  def about
   end
 
   def check

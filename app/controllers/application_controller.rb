@@ -7,12 +7,4 @@ class ApplicationController < ActionController::Base
     redirect_to login_path
     flash[:warning] = "Для использования сервиса, пожалуйста, войдите в систему."
   end
-
-  def check_reg
-    if logged_in?
-      @card = current_user.cards.for_review.first
-    else
-      redirect_to about_path
-    end
-  end
 end

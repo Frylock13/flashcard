@@ -11,7 +11,5 @@ FactoryGirl.define do
     email "user@gmail.com"
     password  "pass"
     password_confirmation "pass"
-    salt "asdasdastr4325234324sdfds"
-    crypted_password Sorcery::CryptoProviders::BCrypt.encrypt("secret","asdasdastr4325234324sdfds")
   end
 end

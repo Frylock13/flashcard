@@ -16,4 +16,12 @@ class HomeController < ApplicationController
     end
     redirect_to root_path
   end
+
+  def check_reg
+    if logged_in?
+      @card = current_user.cards.for_review.first
+    else
+      redirect_to about_path
+    end
+  end
 end

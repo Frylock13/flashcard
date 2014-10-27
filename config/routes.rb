@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
-  root "home#index"
-  get "about" => "home#about"
-  post "check" => "home#check"
-  resources :cards
+  root 'home#index'
 
-  resources :users, only: [:new, :edit, :update, :create]
-  resources :user_sessions, only: [:new, :create, :destroy]
+  get 'about' => 'home#about'
   get 'profile' => 'users#edit'
   get 'login' => 'user_sessions#new'
+
+  post 'check' => 'home#check'
   post 'logout' => 'user_sessions#destroy', :as => :logout
+
+  resources :cards
+  resources :users, only: [:new, :edit, :update, :create]
+  resources :user_sessions, only: [:new, :create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def not_authenticated
-    redirect_to login_path
+    redirect_to about_path
     flash[:warning] = "Для использования сервиса, пожалуйста, войдите в систему."
   end
 end

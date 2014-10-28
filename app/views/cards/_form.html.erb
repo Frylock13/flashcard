@@ -2,6 +2,7 @@
   <%= f.text_field :origin_text, label: "Оригинальный текст" %>
   <%= f.text_field :translated_text, label: "Перевод" %>
   <%= f.date_field :review_date, label: "Дата просмотра" %>
+  <%= f.file_field :image, label: "Изображение" %>
   <%= f.submit "Сохранить", class: "btn btn-success" %>
   <%= link_to "Назад", cards_path, class: "btn btn-default" %>
 <% end %>

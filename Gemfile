@@ -13,7 +13,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'simple_form'
 gem 'bootstrap_form'
-gem "sorcery"
+gem 'sorcery'
+gem 'paperclip', :git => "http://github.com/thoughtbot/paperclip.git"
 
 group :test do
   gem 'rspec-rails'

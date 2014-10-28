@@ -14,7 +14,7 @@ gem 'spring',        group: :development
 gem 'simple_form'
 gem 'bootstrap_form'
 gem 'sorcery'
-gem 'paperclip', :git => "http://github.com/thoughtbot/paperclip.git"
+gem 'paperclip'
 
 group :test do
   gem 'rspec-rails'

@@ -1,6 +1,7 @@
 <div id="row">
   <table class="table">
     <tr>
+      <td><b>Изображение</b></td>
       <td><b>Оригинальный текст</b></td>
       <td><b>Перевод</b></td>
       <td><b>Дата просмотра</b></td>
@@ -11,6 +12,7 @@
     </div>
       <% @cards.each do |card| %>
         <tr>
+          <td><%= image_tag card.image.url(:thumb) %></td>
           <td><%= card.origin_text %></td>
           <td><%= card.translated_text %></td>
           <td><%= card.review_date.strftime("%d/%m/%y") %></td>

@@ -2,8 +2,11 @@
   p {
     font-size: 22px;
   }
-  .cards {
+  .card {
     text-align: center;
     font-size: 19px;
+    .col-md-6.translated {
+      padding-top: 12%;
+    }
   }
 }

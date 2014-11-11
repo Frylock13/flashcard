@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'home#index'
 
   get 'about' => 'home#about'
@@ -9,6 +10,10 @@ Rails.application.routes.draw do
 
   delete 'logout' => 'user_sessions#destroy', :as => :logout
 
+  resources :packs do
+    get 'choose_it', on: :member
+    get 'reset', on: :collection
+  end
   resources :cards
   resources :users, only: [:new, :edit, :update, :create]
   resources :user_sessions, only: [:new, :create]

@@ -1,0 +1,29 @@
+<div class="row">
+  <ul class="nav nav-pills">
+    <li><%= link_to "Добавить колоду", new_pack_path %></li>
+    <li><%= link_to "Сбросить колоды", reset_packs_path %></li>
+  </ul>
+  <table class="table">
+    <tr>
+      <td><b>Изображение</b></td>
+      <td><b>Название</b></td>
+      <td><b>Количество карточек</b></td>
+      <td><b>Действия</b></td>
+    </tr>
+    </div>
+      <% @packs.each do |pack| %>
+        <% if pack.id == current_user.pack_id %>
+          <tr class="current_pack">
+        <% else %>
+          <tr class="inactive_pack">
+        <% end %>
+            <td><%= image_tag pack.image.url(:thumb) %></td>
+            <td><%= pack.name %></td>
+            <td><%= cards_count(pack.id) %></td>
+            <td><%= link_to "Выбрать", choose_it_pack_path(pack), class: "btn btn-success" %></td>
+            <td><%= link_to "Просмотр", pack, class: "btn btn-primary" %></td>
+            <td><%= link_to "Редактировать", edit_pack_path(pack), class: "btn btn-warning", id: "edit_pack" %></td>
+            <td><%= link_to "Удалить", pack, method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-danger", id: "delete_pack" %></td>
+          </tr>
+      <% end %>
+</div>

@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
 
   has_many :cards, dependent: :destroy
+  has_many :packs, dependent: :destroy
+  
 end

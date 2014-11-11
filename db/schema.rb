@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024144820) do
+ActiveRecord::Schema.define(version: 20141111172128) do
 
   create_table "cards", force: true do |t|
     t.string   "origin_text"
@@ -20,6 +20,22 @@ ActiveRecord::Schema.define(version: 20141024144820) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "pack_id"
+  end
+
+  create_table "packs", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|
@@ -30,6 +46,7 @@ ActiveRecord::Schema.define(version: 20141024144820) do
     t.datetime "updated_at"
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
+    t.integer  "pack_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

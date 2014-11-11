@@ -6,11 +6,12 @@ class Card < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   validates_with AttachmentSizeValidator, attributes: :image, less_than: 1.megabytes
 
-  validates :origin_text, :translated_text, :user_id, presence: true
+  validates :origin_text, :translated_text, :user_id, :pack_id, presence: true
 
   scope :for_review, -> { where('review_date <= ?', Date.today).order("RANDOM()") }
 
   belongs_to :user
+  belongs_to :pack
 
   def check_answer(answer)
     if answer.mb_chars.downcase == translated_text

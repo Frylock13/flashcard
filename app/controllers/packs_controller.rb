@@ -39,9 +39,9 @@ class PacksController < ApplicationController
 
   def destroy
     if @pack.destroy
-      flash[:access] = "Карточка успешно удалена"
+      flash[:access] = "Колода успешно удалена"
     else
-      flash[:danger] = "Произошла ошибка при удалении карточки"
+      flash[:danger] = "Произошла ошибка при удалении колоды"
     end
 
     redirect_to packs_path

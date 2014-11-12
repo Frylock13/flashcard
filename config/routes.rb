@@ -5,15 +5,14 @@ Rails.application.routes.draw do
   get 'about' => 'home#about'
   get 'profile' => 'users#edit'
   get 'login' => 'user_sessions#new'
+  get 'reset_current_pack' => 'users#reset_current_pack'
+  get 'packs/:id/set_current' => 'users#set_current_pack', as: 'set_current_pack'
 
   post 'check' => 'home#check'
 
   delete 'logout' => 'user_sessions#destroy', :as => :logout
 
-  resources :packs do
-    get 'choose_it', on: :member
-    get 'reset', on: :collection
-  end
+  resources :packs
   resources :cards
   resources :users, only: [:new, :edit, :update, :create]
   resources :user_sessions, only: [:new, :create]

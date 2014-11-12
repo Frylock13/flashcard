@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141111172128) do
+ActiveRecord::Schema.define(version: 20141112151109) do
 
   create_table "cards", force: true do |t|
     t.string   "origin_text"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20141111172128) do
     t.datetime "updated_at"
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
-    t.integer  "pack_id"
+    t.integer  "current_pack_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

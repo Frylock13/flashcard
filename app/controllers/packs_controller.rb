@@ -6,7 +6,7 @@ class PacksController < ApplicationController
   end
 
   def show
-    @cards = current_user.cards.where('pack_id = ?', @pack)
+    @cards = @pack.cards
   end
 
   def new
@@ -47,22 +47,12 @@ class PacksController < ApplicationController
     redirect_to packs_path
   end
 
-  def choose_it
-    current_user.update_attribute(:pack_id, @pack.id)
-    redirect_to packs_path
-  end
-
-  def reset
-    current_user.update_attribute(:pack_id, nil)
-    redirect_to packs_path
-  end
-
   private
     def set_pack
       @pack = current_user.packs.find(params[:id])
     end
 
     def pack_params
-      params.require(:pack).permit(:name, :user_id, :image)
+      params.require(:pack).permit(:name, :image)
     end
 end

@@ -1,5 +1,5 @@
 <%= bootstrap_form_for @card do |f| %>
-  <%= select("card", "pack_id", Pack.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'Выберите колоду'}) %>
+  <%= select("card", "pack_id", current_user.packs.collect {|p| [ p.name, p.id ] }, {include_blank: 'Выберите колоду'}) %>
   <%= f.text_field :origin_text, label: "Оригинальный текст" %>
   <%= f.text_field :translated_text, label: "Перевод" %>
   <%= f.date_field :review_date, label: "Дата просмотра" %>

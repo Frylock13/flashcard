@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "packs_page" do
   before :each do
     login
-    pack = create(:pack)
+    pack = create(:pack, user_id: 1)
     visit packs_path
   end
 

@@ -6,7 +6,7 @@ FactoryGirl.define do
 
   factory :user do
     id 1
-    pack_id 1
+    current_pack_id 1
     email "user@gmail.com"
     password  "pass"
     password_confirmation "pass"

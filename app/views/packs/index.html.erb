@@ -12,11 +12,7 @@
     </tr>
     </div>
       <% @packs.each do |pack| %>
-        <% if pack.id == current_user.current_pack_id %>
-          <tr class="current_pack">
-        <% else %>
-          <tr class="inactive_pack">
-        <% end %>
+        <tr class="<%= pack == current_user.current_pack ? 'current_pack' : 'inactive_pack' %>">
             <td><%= image_tag pack.image.url(:thumb) %></td>
             <td><%= pack.name %></td>
             <td><%= pack.cards.count %></td>

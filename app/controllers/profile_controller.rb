@@ -10,7 +10,7 @@ class ProfileController < ApplicationController
   def update
     if @profile.update(profile_params)
       flash[:access] = "Данные успешно обновлены"
-      redirect_to cards_path
+      redirect_to profile_path
     else
       flash[:danger] = "Произошла ошибка при обновлении данных"
       render :edit

@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
-  has_attached_file :image, styles: { original: "360x360>", thumb: "40x40>" },
-                            default_url: "/images/:style/missing.png"
+  has_attached_file :image, styles: { medium: "360x360>", thumb: "40x40>" },
+                            default_url: "/assets/:style/missing_avatar.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   validates_with AttachmentSizeValidator, attributes: :image, less_than: 1.megabytes
 

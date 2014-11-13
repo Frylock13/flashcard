@@ -9,6 +9,7 @@ class Card < ActiveRecord::Base
   validates :origin_text, :translated_text, :user_id, :pack_id, presence: true
 
   scope :for_review, -> { where('review_date <= ?', Date.today).order("RANDOM()") }
+  scope :not_review, -> { where('review_date > ?', Date.today).order("RANDOM()") }
 
   belongs_to :user
   belongs_to :pack

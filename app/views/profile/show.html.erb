@@ -1,3 +1,30 @@
-<ul class="nav nav-pills">
-  <li><%= link_to "Изменить профиль", edit_profile_path %></li>
-</ul>
+<div class="row">
+  <ul class="nav nav-pills">
+    <li><%= link_to "Изменить профиль", edit_profile_path %></li>
+  </ul>
+</div>
+<div class="row">
+  <div class="col-md-3 avatar">
+    <%= image_tag current_user.image.url(:medium) %>
+  </div>
+  <div class="col-md-9 statistic">
+    <table class="table table-hover">
+      <tr>
+        <td>Всего колод:</td>
+        <td><%= current_user.packs.count %></td>
+      </tr>
+      <tr>
+        <td>Всего карточек:</td>
+        <td><%= current_user.cards.count %></td>
+      </tr>
+      <tr>
+        <td>Карточек в ожидании:</td>
+        <td><%= current_user.cards.not_review.count %></td>
+      </tr>
+      <tr>
+        <td>Зарегистрирован уже:</td>
+        <td><%= (Date.today - current_user.created_at.to_datetime).to_i %> дней</td>
+      </tr>
+    </table>
+  </div>
+</div>

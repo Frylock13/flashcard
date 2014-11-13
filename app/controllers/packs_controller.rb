@@ -1,5 +1,5 @@
 class PacksController < ApplicationController
-  before_action :set_pack, except: [:index, :new, :create, :reset]
+  before_action :set_pack, except: [:index, :new, :create, :set_current_pack]
 
   def index
     @packs = current_user.packs
@@ -44,6 +44,11 @@ class PacksController < ApplicationController
       flash[:danger] = "Произошла ошибка при удалении колоды"
     end
 
+    redirect_to packs_path
+  end
+
+  def set_current_pack
+    current_user.update_attribute(:current_pack_id, params[:pack_id])
     redirect_to packs_path
   end
 

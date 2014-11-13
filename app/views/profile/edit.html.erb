@@ -1,12 +1,12 @@
 <h1>Изменить данные профиля</h1>
 
-<%= bootstrap_form_for @user do |f| %>
-  <% if @user.errors.any? %>
+<%= bootstrap_form_for @profile, url: profile_path do |f| %>
+  <% if @profile.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
-      <% @user.errors.full_messages.each do |message| %>
+      <% @profile.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -16,6 +16,7 @@
   <%= f.text_field :email, label: "Email" %>
   <%= f.password_field :password, label: "Пароль" %>
   <%= f.password_field :password_confirmation, label: "Подтверждение пароля" %>
+  <%= f.file_field :image, label: "Аватар" %>
   <%= f.submit "Обновить", class: "btn btn-success" %>
   <%= link_to 'Назад', cards_path, class: "btn btn-default" %>
 <% end %>

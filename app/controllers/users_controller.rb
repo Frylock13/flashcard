@@ -31,13 +31,22 @@ class UsersController < ApplicationController
     end
   end
 
-  private
+  def set_current_pack
+    current_user.update_attribute(:current_pack_id, params[:id])
+    redirect_to packs_path
+  end
 
+  def reset_current_pack
+    current_user.update_attribute(:current_pack_id, nil)
+    redirect_to packs_path
+  end
+
+  private
     def set_user
       @user = current_user
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation, :current_pack_id)
     end
 end

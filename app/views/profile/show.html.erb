@@ -8,23 +8,23 @@
     <%= image_tag current_user.image.url(:medium) %>
   </div>
   <div class="col-md-9 statistic">
-    <table class="table table-hover">
-      <tr>
-        <td>Всего колод:</td>
-        <td><%= current_user.packs.count %></td>
-      </tr>
-      <tr>
-        <td>Всего карточек:</td>
-        <td><%= current_user.cards.count %></td>
-      </tr>
-      <tr>
-        <td>Карточек в ожидании:</td>
-        <td><%= current_user.cards.not_review.count %></td>
-      </tr>
-      <tr>
-        <td>Зарегистрирован уже:</td>
-        <td><%= (Date.today - current_user.created_at.to_datetime).to_i %> дней</td>
-      </tr>
-    </table>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <span class="badge"><%= current_user.packs.count %></span>
+        Всего колод:
+      </li>
+      <li class="list-group-item">
+        <span class="badge"><%= current_user.cards.count %></span>
+        Всего карточек:
+      </li>
+      <li class="list-group-item">
+        <span class="badge"><%= current_user.cards.for_review.count %></span>
+        Доступно для тренировок:
+      </li>
+      <li class="list-group-item">
+        <span class="badge"><%= (Date.today - current_user.created_at.to_datetime).to_i %> дней</span>
+        Зарегистрирован уже:
+      </li>
+    </ul>
   </div>
 </div>

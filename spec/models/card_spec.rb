@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Card do
   before :each do
+    @pack = create(:pack)
     @card = create(:card)
   end
 

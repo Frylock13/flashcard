@@ -2,7 +2,11 @@ class HomeController < ApplicationController
   skip_before_filter :require_login, except: [:index]
 
   def index
-    @card = current_user.cards.for_review.first
+    if current_user.current_pack
+      @card = current_user.current_pack.cards.for_review.first
+    else
+      @card = current_user.cards.for_review.first
+    end
   end
 
   def about

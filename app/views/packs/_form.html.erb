@@ -1,0 +1,6 @@
+<%= bootstrap_form_for @pack do |f| %>
+  <%= f.text_field :name, label: "Название колоды" %>
+  <%= f.file_field :image, label: "Изображение" %>
+  <%= f.submit "Сохранить", class: "btn btn-success" %>
+  <%= link_to "Назад", packs_path, class: "btn btn-default" %>
+<% end %>

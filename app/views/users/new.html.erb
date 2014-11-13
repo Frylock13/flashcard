@@ -1,21 +1,35 @@
-<h1>Регистрация</h1>
+<div class="register-panel panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Регистрация</h3>
+  </div>
 
-<%= bootstrap_form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <%= bootstrap_form_for @user do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <div class="panel-body">
+      <div class="field">
+        <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+      </div>
+      <div class="field">
+        <%= f.password_field :password, class: "form-control", placeholder: "Пароль" %>
+      </div>
+      <div class="field">
+        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Подтверждение пароля" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Зарегистрироваться", class: "btn btn-primary", id: "register_button" %>
+        <%= link_to 'Назад', login_path, class: "btn btn-default", id: "back_button" %>
+      </div>
     </div>
-  <% end %>
-
-  <%= f.text_field :email, label: "Email" %>
-  <%= f.password_field :password, label: "Пароль" %>
-  <%= f.password_field :password_confirmation, label: "Подтверждение пароля" %>
-  <%= f.submit "Зарегистрироваться", class: "btn btn-primary" %>
-  <%= link_to 'На главную', root_path, class: "btn btn-default" %>
-<% end %>
+    <% end %>
+  </div>
+</div>

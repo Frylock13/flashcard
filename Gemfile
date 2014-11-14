@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.6'
-gem 'sqlite3'
 gem 'mime-types'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
@@ -15,6 +14,12 @@ gem 'simple_form'
 gem 'bootstrap_form'
 gem 'sorcery'
 gem 'paperclip'
+gem 'sqlite3', :group => [:development, :test]
+
+group :production do
+  gem 'thin'
+  gem 'pg'
+end
 
 group :test do
   gem 'rspec-rails'

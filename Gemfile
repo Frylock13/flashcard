@@ -17,6 +17,7 @@ gem 'paperclip'
 gem 'sqlite3', :group => [:development, :test]
 
 group :production do
+  gem 'rails_12factor'
   gem 'thin'
   gem 'pg'
 end

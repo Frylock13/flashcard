@@ -1,7 +1,7 @@
 <header>
   <div class="row">
     <div class="col-md-4 logo">
-      <%= image_tag("elements/logo.png") %>
+      <h1>Флэшкарточкер</h1>
     </div>
     <div class="col-md-8 header_nav">
       <ul class="nav nav-pills">
@@ -13,6 +13,7 @@
           <li><%= link_to "Выйти", :logout, method: :delete %></li>
         <% else %>
           <li><%= link_to "Главная", root_path %></li>
+          <li><%= link_to "Регистрация", new_user_path %></li>
           <li><%= link_to "Войти", new_user_session_path %></li>
         <% end %>
       </ul>

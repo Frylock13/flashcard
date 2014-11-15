@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:edit, :update]
   skip_before_filter :require_login, only: [:new, :create]
 
   def new
     @user = User.new
+  end
+
+  def edit
   end
 
   def create
@@ -15,6 +19,26 @@ class UsersController < ApplicationController
       flash[:danger] = "Произошла ошибка при регистрации, попробуйте еще раз"
       render :new
     end
+  end
+
+  def update
+    if @user.update(user_params)
+      flash[:access] = "Данные успешно обновлены"
+      redirect_to cards_path
+    else
+      flash[:danger] = "Произошла ошибка при обновлении данных"
+      render :edit
+    end
+  end
+
+  def set_current_pack
+    current_user.update_attribute(:current_pack_id, params[:id])
+    redirect_to packs_path
+  end
+
+  def reset_current_pack
+    current_user.update_attribute(:current_pack_id, nil)
+    redirect_to packs_path
   end
 
   private

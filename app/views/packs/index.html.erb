@@ -12,14 +12,14 @@
     </tr>
     </div>
       <% @packs.each do |pack| %>
-        <tr class="<%= pack == current_user.current_pack ? 'current_pack' : 'inactive_pack' %>">
+        <tr class="<%= pack == current_user.current_pack ? 'current-pack' : 'inactive-pack' %>">
             <td><%= image_tag pack.image.url(:thumb) %></td>
             <td><%= pack.name %></td>
             <td><%= pack.cards.count %></td>
-            <td><%= link_to "Выбрать", pack_set_current_pack_path(pack), class: "btn btn-success", method: :put %></td>
+            <td><%= link_to "Выбрать", set_current_pack_profile_path(pack_id: pack.id), class: "btn btn-success" %></td>
             <td><%= link_to "Просмотр", pack, class: "btn btn-primary" %></td>
-            <td><%= link_to "Редактировать", edit_pack_path(pack), class: "btn btn-warning", id: "edit_pack" %></td>
-            <td><%= link_to "Удалить", pack, method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-danger", id: "delete_pack" %></td>
+            <td><%= link_to "Редактировать", edit_pack_path(pack), class: "btn btn-warning", id: "edit-pack" %></td>
+            <td><%= link_to "Удалить", pack, method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-danger", id: "delete-pack" %></td>
           </tr>
       <% end %>
 </div>

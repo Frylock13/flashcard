@@ -1,11 +1,11 @@
 <h1>Изменить данные профиля</h1>
-<%= bootstrap_form_for @profile, url: profile_path do |f| %>
-  <% if @profile.errors.any? %>
+<%= bootstrap_form_for current_user, url: profile_path do |f| %>
+  <% if current_user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(current_user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
-      <% @profile.errors.full_messages.each do |message| %>
+      <% current_user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

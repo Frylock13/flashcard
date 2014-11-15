@@ -47,11 +47,6 @@ class PacksController < ApplicationController
     redirect_to packs_path
   end
 
-  def set_current_pack
-    current_user.update_attribute(:current_pack_id, params[:pack_id])
-    redirect_to packs_path
-  end
-
   private
     def set_pack
       @pack = current_user.packs.find(params[:id])

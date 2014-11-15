@@ -1,7 +1,7 @@
 <div class="row">
   <ul class="nav nav-pills">
     <li><%= link_to "Добавить колоду", new_pack_path, id: "new_pack" %></li>
-    <li><%= link_to "Сбросить колоды", reset_current_pack_profile_path, id: "reset" %></li>
+    <li><%= link_to "Сбросить колоды", reset_current_pack_profile_path, id: "reset", method: "put" %></li>
   </ul>
   <table class="table">
     <tr>
@@ -16,7 +16,7 @@
             <td><%= image_tag pack.image.url(:thumb) %></td>
             <td><%= pack.name %></td>
             <td><%= pack.cards.count %></td>
-            <td><%= link_to "Выбрать", set_current_pack_profile_path(pack_id: pack.id), class: "btn btn-success" %></td>
+            <td><%= link_to "Выбрать", set_current_pack_profile_path(pack_id: pack.id), class: "btn btn-success", method: "put" %></td>
             <td><%= link_to "Просмотр", pack, class: "btn btn-primary" %></td>
             <td><%= link_to "Редактировать", edit_pack_path(pack), class: "btn btn-warning", id: "edit-pack" %></td>
             <td><%= link_to "Удалить", pack, method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-danger", id: "delete-pack" %></td>

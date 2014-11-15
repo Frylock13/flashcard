@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   resources :packs
   resources :cards
   resource :profile, only: [:show, :edit, :update] do
-    get :set_current_pack
-    get :reset_current_pack
+    put :set_current_pack
+    put :reset_current_pack
   end
   resources :users, only: [:new, :create]
   resources :user_sessions, only: [:new, :create]

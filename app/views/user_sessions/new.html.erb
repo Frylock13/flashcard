@@ -1,23 +1,20 @@
-<div class="login-panel panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Войти</h3>
+<h1>Войти</h1>
+
+<%= form_tag user_sessions_path do %>
+  <div class="field">
+    <%= label_tag :email %><br />
+    <%= text_field_tag :email %>
   </div>
-  <div class="panel-body">
-    <%= form_tag user_sessions_path do %>
-      <div class="field">
-        <%= text_field_tag :email, nil, class: "form-control", placeholder: "Email" %>
-      </div>
-      <div class="field">
-        <%= password_field_tag :password, nil, class: "form-control", placeholder: "Пароль" %>
-      </div>
-      <div class="field">
-        <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-        <%= label_tag "Запомнить меня" %>
-      </div>
-      <div class="actions">
-        <%= submit_tag "Войти", class: "btn btn-success", id: "login_button" %>
-        <%= link_to 'Регистрация', new_user_path, class: "btn btn-primary", id: "register_button" %>
-      </div>
-    <% end %>
+  <div class="field">
+    <%= label_tag :password %><br />
+    <%= password_field_tag :password %>
   </div>
-</div>
+  <div class="field">
+    <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+    <%= label_tag "Запомнить меня" %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Войти", class: "btn btn-success" %>
+    <%= link_to 'На главную', root_path, class: "btn btn-default" %>
+  </div>
+<% end %>

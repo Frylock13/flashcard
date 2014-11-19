@@ -1,7 +1,3 @@
-development:
-  access_key_id: AKIAJOT7DJ5IJ2O366RQ
-  secret_access_key: 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
-
-production:
-  access_key_id: AKIAJOT7DJ5IJ2O366RQ
-  secret_access_key: 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
+bucket: flashcard13
+access_key_id: AKIAJOT7DJ5IJ2O366RQ
+secret_access_key: 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

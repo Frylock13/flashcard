@@ -14,12 +14,9 @@ gem 'simple_form'
 gem 'bootstrap_form'
 gem 'sorcery'
 gem 'paperclip'
-gem 'sqlite3', :group => [:development, :test]
-
-group :production do
-  gem 'thin'
-  gem 'pg'
-end
+gem 'aws-sdk'
+gem 'sqlite3', group: :test
+gem 'pg'
 
 group :test do
   gem 'rspec-rails'

@@ -1,3 +1,4 @@
-bucket: flashcard13
-access_key_id: AKIAJOT7DJ5IJ2O366RQ
-secret_access_key: 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
+development:
+  bucket: ENV["BUCKET"]
+  access_key_id: ENV["ACCES_KEY_ID"]
+  secret_access_key: ["SECRET_ACCESS_KEY"]

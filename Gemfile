@@ -15,7 +15,6 @@ gem 'bootstrap_form'
 gem 'sorcery'
 gem 'paperclip'
 gem 'aws-sdk'
-gem 'sqlite3', group: :test
 gem 'pg'
 
 group :test do

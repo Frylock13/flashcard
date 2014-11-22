@@ -15,7 +15,6 @@ gem 'bootstrap_form'
 gem 'sorcery'
 gem 'paperclip'
 gem 'aws-sdk'
-gem 'sqlite3', :group => [:development, :test]
 
 group :production do
   gem 'thin'
@@ -23,6 +22,7 @@ group :production do
 end
 
 group :test do
+  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'capybara'

@@ -31,18 +31,18 @@ class Card < ActiveRecord::Base
 
   def right_answer
     case successful_repeat_count
-      when 0
-        update(review_date: Date.today + 24.hours)
-      when 1
-        update(review_date: Date.today + 3.days)
-      when 2
-        update(review_date: Date.today + 1.week)
-      when 3
-        update(review_date: Date.today + 2.weeks)
-      when 4
-        update(review_date: Date.today + 1.month)
-      else
-        update(guesed: true)
+    when 0
+      update(review_date: Date.today + 24.hours)
+    when 1
+      update(review_date: Date.today + 3.days)
+    when 2
+      update(review_date: Date.today + 1.week)
+    when 3
+      update(review_date: Date.today + 2.weeks)
+    when 4
+      update(review_date: Date.today + 1.month)
+    else
+      update(guesed: true)
     end
       update(successful_repeat_count: successful_repeat_count + 1)
   end

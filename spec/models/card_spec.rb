@@ -20,7 +20,7 @@ describe Card do
   end
 
   it "checks change successful_repeat_count after first right answer" do
-    expect {@card.check_answer("яблоко")}.to change{@card.successful_repeat_count}.from(0).to(1)
+    expect {@card.check_answer("яблоко")}.to change{ @card.successful_repeat_count }.from(0).to(1)
   end
 
   it "checks change review_date after first right answer" do
@@ -52,7 +52,7 @@ describe Card do
     expect(@card.review_date).to eq Date.today + 1.month
   end
 
-  it "checks change fail repeat count after wrong answer" do
+  it "checks change fail_repeat_count after wrong answer" do
     expect {@card.check_answer("вишня")}.to change{@card.fail_repeat_count}.from(0).to(1)
   end
 

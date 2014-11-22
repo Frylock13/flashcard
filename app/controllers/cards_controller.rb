@@ -1,8 +1,8 @@
 class CardsController < ApplicationController
-  before_action :set_card, except: [:index, :new, :create, :guesed]
+  before_action :set_card, except: [:index, :new, :create, :guessed]
 
   def index
-    @cards = current_user.cards.unguesed
+    @cards = current_user.cards.not_guessed
   end
 
   def show
@@ -46,8 +46,8 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
 
-  def guesed
-    @cards = current_user.cards.guesed
+  def guessed
+    @cards = current_user.cards.guessed
   end
 
   private

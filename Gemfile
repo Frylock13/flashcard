@@ -22,7 +22,6 @@ group :production do
 end
 
 group :test do
-  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'capybara'

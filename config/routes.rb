@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :packs
   resources :cards do
-    get :guesed, on: :collection
+    get :guessed, on: :collection
   end
   resource :profile, only: [:show, :edit, :update] do
     put :set_current_pack

@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(version: 20141122024936) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "pack_id"
-    t.integer  "successful_repeat_count", default: 0
-    t.integer  "fail_repeat_count",       default: 0
-    t.boolean  "guesed",                  default: false
+    t.integer  "right_repetition_count", default: 0
+    t.integer  "wrong_repetition_count", default: 0
+    t.boolean  "guessed",                default: false
   end
 
   create_table "packs", force: true do |t|

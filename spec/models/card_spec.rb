@@ -19,8 +19,8 @@ describe Card do
     expect(@card.review_date).to eq Date.today
   end
 
-  it "checks change successful_repeat_count after first right answer" do
-    expect {@card.check_answer("яблоко")}.to change{ @card.successful_repeat_count }.from(0).to(1)
+  it "checks change right_repetition_count after first right answer" do
+    expect { @card.check_answer("яблоко") }.to change{ @card.right_repetition_count }.from(0).to(1)
   end
 
   it "checks change review_date after first right answer" do
@@ -29,36 +29,36 @@ describe Card do
   end
 
   it "checks change review_date after second right answer" do
-    @card.successful_repeat_count = 1
+    @card.right_repetition_count = 1
     @card.check_answer("яблоко")
     expect(@card.review_date).to eq Date.today + 3.days
   end
 
   it "checks change review_date after third right answer" do
-    @card.successful_repeat_count = 2
+    @card.right_repetition_count = 2
     @card.check_answer("яблоко")
     expect(@card.review_date).to eq Date.today + 1.week
   end
 
   it "checks change review_date after fourth right answer" do
-    @card.successful_repeat_count = 3
+    @card.right_repetition_count = 3
     @card.check_answer("яблоко")
     expect(@card.review_date).to eq Date.today + 2.weeks
   end
 
   it "checks change review_date after fifth right answer" do
-    @card.successful_repeat_count = 4
+    @card.right_repetition_count = 4
     @card.check_answer("яблоко")
     expect(@card.review_date).to eq Date.today + 1.month
   end
 
-  it "checks change fail_repeat_count after wrong answer" do
-    expect {@card.check_answer("вишня")}.to change{@card.fail_repeat_count}.from(0).to(1)
+  it "checks change wrong_repetition_count after wrong answer" do
+    expect {@card.check_answer("вишня")}.to change{@card.wrong_repetition_count}.from(0).to(1)
   end
 
   it "checks reset counts after three wrong answers" do
     3.times { @card.check_answer("вишня") }
-    expect(@card.fail_repeat_count).to eq 0
+    expect(@card.wrong_repetition_count).to eq 0
   end
 
   it "checks reset date after three wrong answers" do
@@ -66,9 +66,9 @@ describe Card do
     expect(@card.review_date).to eq Date.today + 24.hours
   end
 
-  it "checks guesed function" do
-    @card.successful_repeat_count = 5
+  it "checks guessed function" do
+    @card.right_repetition_count = 5
     @card.check_answer("яблоко")
-    expect(@card.guesed).to be true
+    expect(@card.guessed).to be true
   end
 end

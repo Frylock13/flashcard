@@ -11,16 +11,16 @@ class Card < ActiveRecord::Base
   validates :origin_text, :translated_text, :user_id, :pack_id, presence: true
 
   scope :for_review, -> { where('review_date <= ?', Date.today).order("RANDOM()") }
-  scope :guesed, -> { where('guesed = ?', true) }
-  scope :unguesed, -> { where('guesed = ?', false) }
+  scope :guessed, -> { where('guessed = ?', true) }
+  scope :not_guessed, -> { where('guessed = ?', false) }
 
   belongs_to :user
   belongs_to :pack
 
   def check_answer(answer)
-    if answer.mb_chars.downcase == translated_text and fail_repeat_count < 3
+    if answer.mb_chars.downcase == translated_text && wrong_repetition_count < 3
       right_answer
-    elsif answer.mb_chars.downcase != translated_text and fail_repeat_count < 2
+    elsif answer.mb_chars.downcase != translated_text && wrong_repetition_count < 2
       wrong_answer
       false
     else
@@ -30,7 +30,7 @@ class Card < ActiveRecord::Base
   end
 
   def right_answer
-    case successful_repeat_count
+    case right_repetition_count
     when 0
       update(review_date: Date.today + 24.hours)
     when 1
@@ -42,17 +42,17 @@ class Card < ActiveRecord::Base
     when 4
       update(review_date: Date.today + 1.month)
     else
-      update(guesed: true)
+      update(guessed: true)
     end
-      update(successful_repeat_count: successful_repeat_count + 1)
+    update(right_repetition_count: right_repetition_count + 1)
   end
 
   def wrong_answer
-    update(fail_repeat_count: fail_repeat_count + 1)
+    update(wrong_repetition_count: wrong_repetition_count + 1)
   end
 
   def reset_review_date
-    update(review_date: Date.today + 24.hours, fail_repeat_count: 0)
+    update(review_date: Date.today + 24.hours, wrong_repetition_count: 0)
   end
 
   def to_lowercase

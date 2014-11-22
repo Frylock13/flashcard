@@ -1,8 +1,8 @@
 class CardsController < ApplicationController
-  before_action :set_card, except: [:index, :new, :create]
+  before_action :set_card, except: [:index, :new, :create, :guesed]
 
   def index
-    @cards = current_user.cards
+    @cards = current_user.cards.unguesed
   end
 
   def show
@@ -16,7 +16,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = current_user.cards.new(card_params)
+    @card = current_user.cards.new(card_params.merge(review_date: Date.today))
     if @card.save
       flash[:access] = "Карточка успешно создана"
     else
@@ -46,12 +46,16 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
 
+  def guesed
+    @cards = current_user.cards.guesed
+  end
+
   private
     def set_card
       @card = current_user.cards.find(params[:id])
     end
 
     def card_params
-      params.require(:card).permit(:origin_text, :translated_text, :review_date, :pack_id, :image)
+      params.require(:card).permit(:origin_text, :translated_text, :pack_id, :image)
     end
 end

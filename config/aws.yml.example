@@ -1,3 +1,14 @@
-bucket:
-access_key_id:
-secret_access_key:
+development:
+  bucket:
+  access_key_id:
+  secret_access_key:
+
+production:
+  bucket:
+  access_key_id:
+  secret_access_key:
+
+test:
+  bucket:
+  access_key_id:
+  secret_access_key:

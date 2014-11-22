@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   delete 'logout' => 'user_sessions#destroy', :as => :logout
 
   resources :packs
-  resources :cards
+  resources :cards do
+    get :guesed, on: :collection
+  end
   resource :profile, only: [:show, :edit, :update] do
     put :set_current_pack
     put :reset_current_pack

@@ -16,5 +16,9 @@ production:
   database: db/production.postgresql
 
 test:
-  adapter: sqlite3
-  database: db/test.sqlite3
+  <<: *default
+  encoding: unicode
+  host: localhost
+  database: test_flashcard
+  username: postgres
+  password: pass

@@ -53,7 +53,7 @@ describe Card do
   end
 
   it "checks change wrong_repetition_count after wrong answer" do
-    expect {@card.check_answer("вишня")}.to change{@card.wrong_repetition_count}.from(0).to(1)
+    expect { @card.check_answer("вишня") }.to change{ @card.wrong_repetition_count }.from(0).to(1)
   end
 
   it "checks reset counts after three wrong answers" do

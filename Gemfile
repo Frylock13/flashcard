@@ -15,11 +15,7 @@ gem 'bootstrap_form'
 gem 'sorcery'
 gem 'paperclip'
 gem 'aws-sdk'
-
-group :production do
-  gem 'thin'
-  gem 'pg'
-end
+gem 'pg'
 
 group :test do
   gem 'rspec-rails'

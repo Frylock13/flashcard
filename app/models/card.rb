@@ -1,5 +1,6 @@
 class Card < ActiveRecord::Base
   before_save :to_lowercase
+  before_create :set_date
 
   has_attached_file :image, styles: { original: "360x360>", thumb: "40x40>" },
                             default_url: "/images/:style/missing.png",
@@ -11,17 +12,18 @@ class Card < ActiveRecord::Base
   validates :origin_text, :translated_text, :user_id, :pack_id, presence: true
 
   scope :for_review, -> { where('review_date <= ?', Date.today).order("RANDOM()") }
-  scope :guessed, -> { where('guessed = ?', true) }
-  scope :not_guessed, -> { where('guessed = ?', false) }
+  scope :guessed, -> { where(guessed: true) }
+  scope :not_guessed, -> { where(guessed: false) }
 
   belongs_to :user
   belongs_to :pack
 
   def check_answer(answer)
     if answer.mb_chars.downcase == translated_text && wrong_repetition_count < 3
-      right_answer
+      set_right_answer
+      true
     elsif answer.mb_chars.downcase != translated_text && wrong_repetition_count < 2
-      wrong_answer
+      set_wrong_answer
       false
     else
       reset_review_date
@@ -29,10 +31,10 @@ class Card < ActiveRecord::Base
     end
   end
 
-  def right_answer
+  def set_right_answer
     case right_repetition_count
     when 0
-      update(review_date: Date.today + 24.hours)
+      update(review_date: Date.today + 1.day)
     when 1
       update(review_date: Date.today + 3.days)
     when 2
@@ -44,18 +46,22 @@ class Card < ActiveRecord::Base
     else
       update(guessed: true)
     end
-    update(right_repetition_count: right_repetition_count + 1)
+    increment!(:right_repetition_count, 1)
   end
 
-  def wrong_answer
-    update(wrong_repetition_count: wrong_repetition_count + 1)
+  def set_wrong_answer
+    increment!(:wrong_repetition_count, 1)
   end
 
   def reset_review_date
-    update(review_date: Date.today + 24.hours, wrong_repetition_count: 0)
+    update(review_date: Date.today + 1.day, wrong_repetition_count: 0)
   end
 
   def to_lowercase
     self.translated_text = translated_text.mb_chars.downcase
+  end
+
+  def set_date
+    self.review_date = DateTime.now
   end
 end

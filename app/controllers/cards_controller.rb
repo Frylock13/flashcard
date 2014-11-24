@@ -16,7 +16,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = current_user.cards.new(card_params.merge(review_date: Date.today))
+    @card = current_user.cards.new(card_params)
     if @card.save
       flash[:access] = "Карточка успешно создана"
     else

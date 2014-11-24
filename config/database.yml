@@ -1,15 +1,15 @@
 default: &default
   adapter: postgresql
+  encoding: unicode
+  host: <%= ENV["DB_HOST"] %>
+  database: <%= ENV["DB_NAME"] %>
+  username: <%= ENV["DB_USERNAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
   pool: 5
   timeout: 5000
 
 development:
   <<: *default
-  encoding: unicode
-  host: localhost
-  database: flashcard
-  username: postgres
-  password: pass
 
 production:
   <<: *default
@@ -18,7 +18,4 @@ production:
 test:
   <<: *default
   encoding: unicode
-  host: localhost
-  database: test_flashcard
-  username: postgres
-  password: pass
+  database: <%= ENV["TEST_DB_NAME"] %>

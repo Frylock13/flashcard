@@ -12,7 +12,7 @@
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/config/aws.yml
+/config/secrets.yml
 /public/system/*
 /log/*.log
 /tmp

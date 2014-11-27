@@ -1,0 +1,28 @@
+<div class="row">
+  <ul class="nav nav-pills">
+    <li><%= link_to "Добавить карточку", new_card_path, id: "new_card" %></li>
+    <li><%= link_to "Отгаданные", guessed_cards_path %></li>
+  </ul>
+</div>
+<div class="row">
+  <table class="table">
+    <tr>
+      <td><b>Изображение</b></td>
+      <td><b>Оригинальный текст</b></td>
+      <td><b>Перевод</b></td>
+      <td><b>Дата просмотра</b></td>
+      <td><b>Действия</b></td>
+    </tr>
+    <% @cards.each do |card| %>
+      <tr>
+        <td><%= image_tag card.image.url(:thumb) %></td>
+        <td><%= card.origin_text %></td>
+        <td><%= card.translated_text %></td>
+        <td><%= card.review_date.strftime("%d/%m/%y") %></td>
+        <td><%= link_to "Просмотр", card, class: "btn btn-primary" %></td>
+        <td><%= link_to "Редактировать", edit_card_path(card), class: "btn btn-warning", id: "edit_card" %></td>
+        <td><%= link_to "Удалить", card, method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-danger", id: "delete_card" %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

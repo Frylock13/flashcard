@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_attached_file :image, styles: { medium: "360x360>", thumb: "40x40>" },
                             default_url: ":style/missing_avatar.jpg",
                             storage: :s3,
-                            s3_credentials: "#{Rails.root}/config/aws.yml"
+                            s3_credentials: "#{Rails.root}/config/secrets.yml"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   validates_with AttachmentSizeValidator, attributes: :image, less_than: 1.megabytes
 

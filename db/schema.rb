@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113180228) do
+ActiveRecord::Schema.define(version: 20141122024936) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "cards", force: true do |t|
     t.string   "origin_text"
@@ -25,6 +28,9 @@ ActiveRecord::Schema.define(version: 20141113180228) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "pack_id"
+    t.integer  "right_repetition_count", default: 0
+    t.integer  "wrong_repetition_count", default: 0
+    t.boolean  "guessed",                default: false
   end
 
   create_table "packs", force: true do |t|
@@ -53,7 +59,7 @@ ActiveRecord::Schema.define(version: 20141113180228) do
     t.datetime "image_updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
 
 end

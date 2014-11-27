@@ -3,9 +3,9 @@ class HomeController < ApplicationController
 
   def index
     if current_user.current_pack
-      @card = current_user.current_pack.cards.for_review.first
+      @card = current_user.current_pack.cards.for_review.not_guessed.first
     else
-      @card = current_user.cards.for_review.first
+      @card = current_user.cards.for_review.not_guessed.first
     end
   end
 

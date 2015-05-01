@@ -5,6 +5,7 @@
         <h2><%= @card.origin_text %></h2>
         <%= image_tag @card.image.url, class: "image" %>
       </div>
+      
       <div class="col-md-6 translated">
         <%= text_field_tag :translated_text %>
         <%= hidden_field_tag :card_id, @card.id %>

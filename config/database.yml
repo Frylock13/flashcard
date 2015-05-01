@@ -9,7 +9,7 @@ development:
   host: localhost
   database: flashcard
   username: postgres
-  password: pass
+  password: 3902_E@@__)@()@232_)_++_2)
 
 production:
   <<: *default

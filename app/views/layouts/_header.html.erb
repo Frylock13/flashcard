@@ -1,8 +1,9 @@
 <header>
   <div class="row">
     <div class="col-md-4 logo">
-      <%= image_tag("elements/logo.png") %>
+      <%= link_to (image_tag "elements/logo.png" ), root_path %>
     </div>
+    
     <div class="col-md-8 header-nav">
       <ul class="nav nav-pills">
         <% if current_user %>

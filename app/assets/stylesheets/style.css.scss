@@ -3,17 +3,27 @@ header {
     border-bottom: solid rgb(195, 194, 194) 1px;
   }
 }
+
+footer {
+  p {
+    text-align: right;
+  }
+}
+
 .table {
   .current-pack {
     background: #F0F0F0;
   }
 }
+
 .col-md-3.avatar {
   min-width: 400px;
 }
+
 ul.nav.nav-pills {
   float: right;
 }
+
 .login-panel, .register-panel {
   width: 350px;
   margin: 0 auto;
@@ -25,6 +35,7 @@ ul.nav.nav-pills {
     display: none;
   }
 }
+
 .login-panel {
   .field {
     padding-bottom: 14px;

@@ -3,6 +3,7 @@
     <li><%= link_to "Добавить колоду", new_pack_path, id: "new_pack" %></li>
     <li><%= link_to "Сбросить колоды", reset_current_pack_profile_path, id: "reset", method: "put" %></li>
   </ul>
+  
   <table class="table">
     <tr>
       <td><b>Изображение</b></td>
@@ -10,6 +11,7 @@
       <td><b>Количество карточек</b></td>
       <td><b>Действия</b></td>
     </tr>
+
     </div>
       <% @packs.each do |pack| %>
         <tr class="<%= pack == current_user.current_pack ? 'current-pack' : 'inactive-pack' %>">
@@ -22,4 +24,6 @@
             <td><%= link_to "Удалить", pack, method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-danger", id: "delete-pack" %></td>
           </tr>
       <% end %>
+    </div>
+  </table>
 </div>

@@ -20,14 +20,13 @@ ActiveRecord::Schema.define(version: 20141122024936) do
     t.string   "origin_text"
     t.string   "translated_text"
     t.date     "review_date"
-    t.integer  "user_id"
+    t.integer  "pack_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.integer  "pack_id"
     t.integer  "right_repetition_count", default: 0
     t.integer  "wrong_repetition_count", default: 0
     t.boolean  "guessed",                default: false
@@ -35,24 +34,24 @@ ActiveRecord::Schema.define(version: 20141122024936) do
 
   create_table "packs", force: true do |t|
     t.string   "name"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|
     t.string   "email",                        null: false
     t.string   "crypted_password",             null: false
     t.string   "salt",                         null: false
+    t.integer  "current_pack_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
-    t.integer  "current_pack_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
